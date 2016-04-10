@@ -26,13 +26,13 @@ XML;
         }
 
         if ($parent) {
-            if ($categories->$parent) {
-                $newCategory = $categories->$parent->addChild($child, '0');
+            if ($categories->categories->$parent) {
+                $newCategory = $categories->categories->$parent->addChild($child, '');
             } else {
                 throw new \Exception('Invalid parent category', 400);
             }
         } else {
-            $newCategory = $categories->addChild($child, '0');
+            $newCategory = $categories->root->addChild($child, 'test');
         }
 
         //echo $newCategory->asXML();
