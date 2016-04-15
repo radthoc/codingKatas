@@ -14,4 +14,22 @@ When doing programming katas the developer follows the *TDD* approach. That's wh
 Test Cases
 ==========
 
-This repository has several katas. Each one is a class in the Kata namespace with its corresponding test class within Tests.
+Categories manager
+------------------
+
+A class with Two methods. The first one to add categories to an XML that takes two arguments: The category to be added and an optional parent where to add it.
+
+If the parent is not set then the category is added as a root node.   And the second that returns the child of given a category.
+
+Numbers to string
+-----------------
+
+An algorithm to convert numbers to its corresponding letter in a convertion table. Numbers are separated by a space to identify each letter and words are formed separating groups of numbers by th plus sign.
+
+For instance, '8 1 14+3 1 14 20 1 4 15+2 9 14 7 15' should be converted to 'han cantado bingo'.
+
+Reverse String
+--------------
+
+An algorithm to reverse a string.  For instance, 'rose' should be converted to 'esor'.
+
