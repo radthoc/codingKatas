@@ -42,13 +42,20 @@ class CategoriesTest extends \PHPUnit_Framework_TestCase
         $result = $this->categoriesManager->addCategory('category0', 'category');
     }
 
-    public function testaddNewCategory()
+    public function testGetCategory()
     {
-        $expected = ['subcategory0.1', 'subcategory0.2'];
+        $expected = '[{"sub-category1.1":{"name":"la primavera","value":"10"},"sub-category1.2":{"name":"El verano","value":"21"}}]';
+
+        $this->assertEquals($expected, $this->categoriesManager->getChilds('category1'));
+    }
+
+    public function testAddCategory()
+    {
+        $expected = '[{"subcategory0.1":{},"subcategory0.2":{}}]';
 
         $this->categoriesManager->addCategory('category0');
-        //$this->categoriesManager->AddCategory('subcategory0.1', 'category0');
-        //$this->categoriesManager->AddCategory('subcategory0.2', 'category0');
+        $this->categoriesManager->AddCategory('subcategory0.1', 'category0');
+        $this->categoriesManager->AddCategory('subcategory0.2', 'category0');
 
         $this->assertEquals($expected, $this->categoriesManager->getChilds('category0'));
     }

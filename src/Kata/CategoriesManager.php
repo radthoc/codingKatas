@@ -8,43 +8,49 @@ namespace Kata;
 
 class CategoriesManager
 {
+    private $categoryHandler;
     private $categories = <<<XML
 <?xml version='1.0' standalone='yes'?>
 <categories>
     <category1>
-        <sub-category1/>
+        <sub-category1.1>
+            <name>la primavera</name>
+            <value>10</value>
+        </sub-category1.1>
+        <sub-category1.2>
+            <name>El verano</name>
+            <value>21</value>
+        </sub-category1.2>
     </category1>
 </categories>
 XML;
 
-    public function addCategory($child, $parent = null)
+    public function __construct()
     {
-        $categories = $this->getCategoriesHandler();
+        $this->categoryHandler = $this->getCategoriesHandler();
+    }
 
-        if ($matches = $categories->xpath('//' . $child)) {
+    public function addCategory($childCategory, $parentCategory = null)
+    {
+        if ($childCategoryExists = $this->categoryHandler->xpath('//' . $childCategory)) {
             throw new \Exception('Invalid child category', 400);
         }
 
-        if ($parent) {
-            if ($categories->categories->$parent) {
-                $newCategory = $categories->categories->$parent->addChild($child, '');
+        if ($parentCategory) {
+            if ($this->categoryHandler->$parentCategory) {
+                $newCategory = $this->categoryHandler->$parentCategory->addChild($childCategory, '');
             } else {
                 throw new \Exception('Invalid parent category', 400);
             }
         } else {
-            $newCategory = $categories->root->addChild($child, 'test');
+            $newCategory = $this->categoryHandler->addChild($childCategory, '');
         }
-
-        //echo $newCategory->asXML();
-        echo $categories->asXML();
     }
 
     public function getChilds($category)
     {
-        $categories = $this->getCategoriesHandler();
-
-        if ($matches = $categories->xpath('//' . $category)) {
-            return $matches;
+        if ($categoryMatches = $this->categoryHandler->xpath('//' . $category)) {
+            return json_encode($categoryMatches);
         }
 
         throw new \Exception('Category not found', 404);
