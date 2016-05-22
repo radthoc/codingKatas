@@ -15,7 +15,7 @@ class CategoriesTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      * @expectedExceptionCode 404
-     * @expectedExceptionMessage Category not found
+     * @expectedExceptionMessage Invalid request: Category no found
      */
     public function testGetChildsCategoryNotFoundException()
     {
@@ -25,9 +25,9 @@ class CategoriesTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      * @expectedExceptionCode 400
-     * @expectedExceptionMessage Invalid child category
+     * @expectedExceptionMessage Invalid request: Category already exists
      */
-    public function testAddChildCategoryNotFoundException()
+    public function testAddChildCategoryAlreadyExistsException()
     {
         $result = $this->categoriesManager->addCategory('category1');
     }
@@ -35,7 +35,7 @@ class CategoriesTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      * @expectedExceptionCode 400
-     * @expectedExceptionMessage Invalid parent category
+     * @expectedExceptionMessage Invalid request: Parent category not found
      */
     public function testAddParentCategoryNotFoundException()
     {

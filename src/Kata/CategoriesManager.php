@@ -32,15 +32,15 @@ XML;
 
     public function addCategory($childCategory, $parentCategory = null)
     {
-        if ($childCategoryExists = $this->categoryHandler->xpath('//' . $childCategory)) {
-            throw new \Exception('Invalid child category', 400);
+        if ($this->categoryHandler->xpath('//' . $childCategory)) {
+            throw new \Exception('Invalid request: Category already exists', 400);
         }
 
         if ($parentCategory) {
             if ($this->categoryHandler->$parentCategory) {
                 $newCategory = $this->categoryHandler->$parentCategory->addChild($childCategory, '');
             } else {
-                throw new \Exception('Invalid parent category', 400);
+                throw new \Exception('Invalid request: Parent category not found', 400);
             }
         } else {
             $newCategory = $this->categoryHandler->addChild($childCategory, '');
@@ -53,8 +53,7 @@ XML;
             return json_encode($categoryMatches);
         }
 
-        throw new \Exception('Category not found', 404);
-
+        throw new \Exception('Invalid request: Category no found', 404);
     }
 
     private function getCategoriesHandler()
@@ -62,3 +61,4 @@ XML;
         return new \SimpleXMLElement($this->categories);
     }
 }
+
