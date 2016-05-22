@@ -2,10 +2,9 @@
 namespace Kata;
 
 /**
- * Class sudoku
+ * Class CategoriesManager
  * @package Kata
  */
-
 class CategoriesManager
 {
     private $categoryHandler;
@@ -61,4 +60,3 @@ XML;
         return new \SimpleXMLElement($this->categories);
     }
 }
-

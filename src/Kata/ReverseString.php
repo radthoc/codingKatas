@@ -2,20 +2,18 @@
 namespace Kata;
 
 /**
- * Class sudoku
+ * Class ReverseString
  * @package Kata
  */
-
 class ReverseString
 {
-    private $lastColumn = 0;
-
-    public function execute($INPUT)
+    public function execute($string)
     {
-        for ($startChar = 0, $endChar = strlen($INPUT) - 1; $startChar < $endChar; $startChar++, $endChar--) {
-            list($INPUT[$startChar], $INPUT[$endChar]) = array($INPUT[$endChar], $INPUT[$startChar]);
+        for ($startChar = 0, $endChar = strlen($string) - 1; $startChar < $endChar; $startChar++, $endChar--) {
+            list($string[$startChar], $string[$endChar]) = array($string[$endChar], $string[$startChar]);
         }
 
-        return $INPUT;
+        return $string;
     }
 }
+

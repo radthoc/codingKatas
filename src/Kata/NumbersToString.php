@@ -2,14 +2,13 @@
 namespace Kata;
 
 /**
- * Class sudoku
+ * Class NumbersToString
  * @package Kata
  */
-
 class NumbersToString
 {
-    private $conversionTable = [];
     /*
+    conversion table:
           1 => 'a',
           2 => 'b',
           3 => 'c',
@@ -36,18 +35,21 @@ class NumbersToString
           24 => 'x',
           25 => 'y',
           26 => 'z',
-    ];*/
+    */
+    private $conversionTable = [];
+
+    public function __construct()
+    {
+        $this->fillArray();
+    }
 
     public function execute($numbers)
     {
         $string = '';
-        $this->fillArray();
-        //echo var_export($this->conversionTable, true);exit;
 
         $words = explode('+', $numbers);
 
-        foreach($words as $word)
-        {
+        foreach ($words as $word) {
             $numbersOfWord = explode(' ', $word);
 
             array_walk($numbersOfWord, function ($number) use (&$string) {
@@ -62,6 +64,6 @@ class NumbersToString
 
     private function fillArray()
     {
-        $this->conversionTable = array_combine(range(1,26),range('a', 'z'));
+        $this->conversionTable = array_combine(range(1, 26), range('a', 'z'));
     }
 }
