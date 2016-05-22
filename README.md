@@ -33,3 +33,7 @@ Reverse String
 
 An algorithm to reverse a string.  For instance, 'rose' should be converted to 'esor'.
 
+Nested brackets
+---------------
+
+A class to validate whether all the brackets in a string are correctly closed

@@ -7,6 +7,10 @@ namespace Kata;
  */
 class ReverseString
 {
+    /**
+     * @param $string
+     * @return string
+     */
     public function execute($string)
     {
         for ($startChar = 0, $endChar = strlen($string) - 1; $startChar < $endChar; $startChar++, $endChar--) {

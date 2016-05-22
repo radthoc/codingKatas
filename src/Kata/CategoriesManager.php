@@ -29,6 +29,11 @@ XML;
         $this->categoryHandler = $this->getCategoriesHandler();
     }
 
+    /**
+     * @param $childCategory
+     * @param null $parentCategory
+     * @throws \Exception
+     */
     public function addCategory($childCategory, $parentCategory = null)
     {
         if ($this->categoryHandler->xpath('//' . $childCategory)) {
@@ -46,6 +51,11 @@ XML;
         }
     }
 
+    /**
+     * @param $category
+     * @return string
+     * @throws \Exception
+     */
     public function getChilds($category)
     {
         if ($categoryMatches = $this->categoryHandler->xpath('//' . $category)) {
@@ -55,6 +65,9 @@ XML;
         throw new \Exception('Invalid request: Category no found', 404);
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     private function getCategoriesHandler()
     {
         return new \SimpleXMLElement($this->categories);

@@ -43,6 +43,10 @@ class NumbersToString
         $this->fillArray();
     }
 
+    /**
+     * @param $numbers
+     * @return string
+     */
     public function execute($numbers)
     {
         $string = '';
