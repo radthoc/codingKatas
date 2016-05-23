@@ -27,7 +27,6 @@ class NestedBrackets
                     break;
                 }
             }
-            //echo var_export($this->bracketsPile, true);
         }
 
         return $this->isPileEmpty();
